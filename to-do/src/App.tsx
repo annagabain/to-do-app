@@ -1,21 +1,44 @@
 import { useState } from 'react'
 import './App.css'
+import './index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [item, setItem] = useState<string>("");
+  const [items, setItems] = useState<string[]>(["make the submission form", "test the form"]);
+
 
   return (
     <>
-      <div>
-        <h1>My ToDos</h1>
-      </div>
+      <section className='newcard'>
+        <div>
+          <h1>My ToDo-s</h1>
+        </div>
 
-      <div className="card">
-        <button onClick={() => console.log('item added')
-        }>
-          Add new item +
-        </button>
-      </div>
+        <div >
+          <button className='newitembutton' onClick={() => console.log('item added')
+          }>
+            <p>Add new item +</p>
+          </button>
+        </div>
+      </section>
+
+
+      <section className="cards">
+      <h3>To Do Items:</h3>
+
+        <ul>
+
+          {
+            items.map((item, i) => (
+              <li key={i}>{item}
+                <button onClick={() => console.log('item removed')
+                }>
+                  <p>-</p>
+                </button></li>
+            ))
+          }
+        </ul>
+      </section>
 
     </>
   )
