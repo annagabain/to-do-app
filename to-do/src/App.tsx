@@ -1,29 +1,51 @@
-import { useState } from 'react'
-import './App.css'
-import './index.css'
-
-
+import { useState } from 'react';
+import './App.css';
+import './index.css';
 
 function App() {
+
   const [newTask, setNewTask] = useState<string>("");
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<{ description: string; done: boolean }[]>([]);
+
+
 
   function addNewTask() {
-    if (newTask.length == 0) {
-      alert('Add task desciption')
+    if (newTask.length === 0) {
+      alert('Add task description');
     } else {
-      setTasks(([...tasks, newTask]));
+      setTasks([...tasks, { description: newTask, done: false }]);
       setNewTask("");
-      console.log('task added')
-
+      console.log('task added');
     }
   }
 
 
-   function deleteSelectedTask(index: number) {
-    const updatedTasks = tasks.filter((_, i) => i !== index);
-    setTasks(updatedTasks);    
-    console.log(`the "${tasks[index]}" task is now deleted`);
+  // toggles the done status of a task
+  function toggleDone(index: number) {
+    const updatedTasks = tasks.map((task, i) =>
+      i === index ? { ...task, done: !task.done } : task
+    );
+    setTasks(updatedTasks);
+    console.log(`the "${tasks[index].description}" task is now ${updatedTasks[index].done ? 'done' : 'not done'}`);
+  }
+
+
+  // deletes a selected task
+  // function deleteSelectedTask(index: number) {
+  //   const updatedTasks = tasks.filter((_, i) => i !== index);
+  //   alert(`Delete "${tasks[index].description}" ?`)
+  //   setTasks(updatedTasks);
+  //   console.log(`the "${tasks[index].description}" task is now deleted`);
+  // }
+
+  function deleteSelectedTask(index: number) {
+    // Show a confirmation dialog
+    const confirmed = window.confirm(`Are you sure you want to delete "${tasks[index].description}"?`);
+    if (confirmed) {
+      const updatedTasks = tasks.filter((_, i) => i !== index);
+      setTasks(updatedTasks);
+      console.log(`the "${tasks[index].description}" task is now deleted`);
+    }
   }
 
 
@@ -47,24 +69,31 @@ function App() {
         </div>
       </section>
 
-
       <section className="cards">
-
-        {tasks.length == 0 ? (<h3>No Tasks to show:</h3>) : (<h3>My Tasks:</h3>)}
+        {tasks.length === 0 ? (
+          <h3>No Tasks to show:</h3>
+        ) : (
+          <h3>My Tasks:</h3>
+        )}
         <ul>
-          {
-            tasks.map((item, i) => (
-              <li key={i}> {item}
-                <button onClick={() => deleteSelectedTask(i)}>
-                  <p>-</p>
-                </button></li>
-            ))
-          }
+          {tasks.map((task, i) => (
+            <li key={i} className={task.done ? 'task-done' : 'task'}>
+              <button
+                className={task.done ? 'done' : 'un-done'}
+                onClick={() => toggleDone(i)}
+              >
+                {task.done ? 'completed' : 'pending...'}
+              </button>
+              {task.description}
+              <button onClick={() => deleteSelectedTask(i)} className="delete-task-button">
+                <p>-</p>
+              </button>
+            </li>
+          ))}
         </ul>
       </section>
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;
