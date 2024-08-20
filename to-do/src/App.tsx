@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import './index.css'
 
+
+
 function App() {
   const [newTask, setNewTask] = useState<string>("");
   const [tasks, setTasks] = useState<string[]>([]);
@@ -18,8 +20,10 @@ function App() {
   }
 
 
-  function deleteSelectedTask() {
-    console.log('task deleted')
+   function deleteSelectedTask(index: number) {
+    const updatedTasks = tasks.filter((_, i) => i !== index);
+    setTasks(updatedTasks);    
+    console.log(`the "${tasks[index]}" task is now deleted`);
   }
 
 
@@ -50,8 +54,8 @@ function App() {
         <ul>
           {
             tasks.map((item, i) => (
-              <li key={i}>{item}
-                <button onClick={deleteSelectedTask}>
+              <li key={i}> {item}
+                <button onClick={() => deleteSelectedTask(i)}>
                   <p>-</p>
                 </button></li>
             ))
