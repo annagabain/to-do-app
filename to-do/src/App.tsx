@@ -20,6 +20,15 @@ function App() {
   }
 
 
+ // handles Enter key press in the input field
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter') {
+      addNewTask();
+    }
+  }
+
+
+
   // toggles the done status of a task
   function toggleDone(index: number) {
     const updatedTasks = tasks.map((task, i) =>
@@ -60,6 +69,7 @@ function App() {
             type="text"
             value={newTask}
             onChange={(event) => setNewTask(event.target.value)}
+            onKeyDown={handleKeyDown}
             placeholder="Add a new task"
             className="task-input"
           />
