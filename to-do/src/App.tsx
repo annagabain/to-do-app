@@ -3,8 +3,17 @@ import './App.css'
 import './index.css'
 
 function App() {
-  const [item, setItem] = useState<string>("");
-  const [items, setItems] = useState<string[]>(["make the submission form", "test the form"]);
+  const [task, setTask] = useState<string>("");
+  const [tasks, setTasks] = useState<string[]>(["make the submission form", "test the form"]);
+
+  function addNewTask() {
+    console.log('task added')
+  }
+
+
+  function deleteSelectedTask() {
+    console.log('task deleted')
+  }
 
 
   return (
@@ -13,10 +22,8 @@ function App() {
         <div>
           <h1>My ToDo-s</h1>
         </div>
-
         <div >
-          <button className='newitembutton' onClick={() => console.log('item added')
-          }>
+          <button className='newitembutton' onClick={addNewTask}>
             <p>Add new item +</p>
           </button>
         </div>
@@ -24,15 +31,14 @@ function App() {
 
 
       <section className="cards">
-      <h3>To Do Items:</h3>
+        <h3>My Tasks:</h3>
 
         <ul>
 
           {
-            items.map((item, i) => (
+            tasks.map((item, i) => (
               <li key={i}>{item}
-                <button onClick={() => console.log('item removed')
-                }>
+                <button onClick={deleteSelectedTask}>
                   <p>-</p>
                 </button></li>
             ))

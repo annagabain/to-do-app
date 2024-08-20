@@ -8,6 +8,7 @@
   --mocca: #322f2b;
   --moccabeige: #968d81;
   --accentbrown: #663a2a;
+  --accentorange: #eda460;
 
 
   background-color: var(--moccabeige);
@@ -70,7 +71,7 @@ button:hover,
 }
 
 .newitembutton:hover {
-  background-color: #eda460;
+  background-color: var(--accentorange);
   transform: scale(1.1);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
