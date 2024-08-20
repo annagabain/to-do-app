@@ -10,6 +10,21 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: baseline;
+  gap: 2rem;
+
+  .add-new-field {
+    background-color: var(--antiquewhite);
+    color: var(--mocca);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  .task-input {
+    padding-left: 1rem;
+    margin-top: 1rem;  
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
 }
 
 .cards {
@@ -22,25 +37,27 @@
 
 ul {
   list-style-type: none;
-
-  li {
+ li {
     padding-left: 1rem;
     margin-top: 1rem;
     background-color: var(--antiquewhite);
     color: var(--mocca);
     display: grid;
     grid-template-columns: 12fr 1fr;
-
+  
     border-radius: 8px;
     border: 1px solid transparent;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-
+  
     font-size: 1.5rem;
     font-weight: 500;
   }
+
 
   li:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 }
+
+

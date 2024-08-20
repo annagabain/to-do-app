@@ -3,11 +3,18 @@ import './App.css'
 import './index.css'
 
 function App() {
-  const [task, setTask] = useState<string>("");
-  const [tasks, setTasks] = useState<string[]>(["make the submission form", "test the form"]);
+  const [newTask, setNewTask] = useState<string>("");
+  const [tasks, setTasks] = useState<string[]>([]);
 
   function addNewTask() {
-    console.log('task added')
+    if (newTask.length == 0) {
+      alert('Add task desciption')
+    } else {
+      setTasks(([...tasks, newTask]));
+      setNewTask("");
+      console.log('task added')
+
+    }
   }
 
 
@@ -22,19 +29,25 @@ function App() {
         <div>
           <h1>My ToDo-s</h1>
         </div>
-        <div >
+        <div className='add-new-field'>
+          <input
+            type="text"
+            value={newTask}
+            onChange={(event) => setNewTask(event.target.value)}
+            placeholder="Add a new task"
+            className="task-input"
+          />
           <button className='newitembutton' onClick={addNewTask}>
-            <p>Add new item +</p>
+            <p>+</p>
           </button>
         </div>
       </section>
 
 
       <section className="cards">
-        <h3>My Tasks:</h3>
 
+        {tasks.length == 0 ? (<h3>No Tasks to show:</h3>) : (<h3>My Tasks:</h3>)}
         <ul>
-
           {
             tasks.map((item, i) => (
               <li key={i}>{item}
