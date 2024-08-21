@@ -57,6 +57,7 @@ function App() {
     }
   }
 
+  const tasksLeft = tasks.filter(task => !task.done).length;
 
   return (
     <>
@@ -85,12 +86,23 @@ function App() {
           <h3>No Tasks to show:</h3>
         ) : (
           <>
-          <article className="cards-titles">
-          <h3>Status:</h3>
-          <h3>My Tasks:</h3>
-          <h3>Delete:</h3>
-          </article>
-         
+
+          {tasksLeft === 0? ( <h2>
+            Tasks left to do: <span style={{ color: 'green' }}>None</span> 
+            </h2>):( <h2>
+              Tasks left to do: <span style={{ color: 'brown' }}>{tasksLeft}</span>
+            </h2>)
+          }
+           
+
+
+            <article className="cards-titles">
+
+              <h3>Status:</h3>
+              <h3>My Tasks:</h3>
+              <h3>Delete:</h3>
+            </article>
+
 
           </>
 
