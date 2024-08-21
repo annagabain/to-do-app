@@ -20,7 +20,7 @@ function App() {
   }
 
 
- // handles Enter key press in the input field
+  // handles Enter key press in the input field
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === 'Enter') {
       addNewTask();
@@ -66,6 +66,7 @@ function App() {
         </div>
         <div className='add-new-field'>
           <input
+            id='add-new'
             type="text"
             value={newTask}
             onChange={(event) => setNewTask(event.target.value)}
@@ -83,7 +84,17 @@ function App() {
         {tasks.length === 0 ? (
           <h3>No Tasks to show:</h3>
         ) : (
+          <>
+          <article className="cards-titles">
+          <h3>Status:</h3>
           <h3>My Tasks:</h3>
+          <h3>Delete:</h3>
+          </article>
+         
+
+          </>
+
+
         )}
         <ul>
           {tasks.map((task, i) => (

@@ -4,6 +4,7 @@
   font-weight: 400;
 
 
+
   --antiquewhite: #dfd6ca;
   --mocca: #322f2b;
   --moccabeige: #968d81;
@@ -25,10 +26,21 @@
 
 body {
   margin: 0;
+  padding: 0;
+  /* width: 100%; */
   display: flex;
-  place-items: center;
+  align-items: center;
+  background-color: var(--moccabeige);
   min-width: 320px;
+  /* max-width: 800px; */
   min-height: 100vh;
+}
+
+#root {
+  max-width: 800px;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -61,8 +73,7 @@ button,
 
 button:hover,
 .card button:hover,
-.newitembutton:hover
- {
+.newitembutton:hover {
   background-color: var(--moccabeige);
   color: var(--mocca);
   border-color: var(--mocca);
