@@ -88,7 +88,7 @@ function App() {
           <>
 
           {tasksLeft === 0? ( <h2>
-            Tasks left to do: <span style={{ color: 'green' }}>None</span> 
+            <span style={{ color: 'green' }}>All tasks completed</span> 
             </h2>):( <h2>
               Tasks left to do: <span style={{ color: 'brown' }}>{tasksLeft}</span>
             </h2>)
