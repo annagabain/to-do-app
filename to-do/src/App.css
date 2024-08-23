@@ -65,10 +65,7 @@ ul {
     grid-template-columns: 1fr 12fr 1fr;
     gap: 1rem;
     align-items: center;
-    /* Aligns the content vertically in the center */
     text-align: left;
-    /* Aligns text to the left */
-    /* padding: 1rem; */
 
     border-radius: 8px;
     border: 1px solid transparent;
@@ -92,8 +89,12 @@ ul {
 
 .done {
   background-color: green;
+  border-radius:   8px  0 0 8px ;
+
 }
 
 .un-done {
   background-color: red;
+  border-radius:   8px  0 0 8px ;
+
 }

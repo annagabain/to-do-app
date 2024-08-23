@@ -39,14 +39,6 @@ function App() {
   }
 
 
-  // deletes a selected task
-  // function deleteSelectedTask(index: number) {
-  //   const updatedTasks = tasks.filter((_, i) => i !== index);
-  //   alert(`Delete "${tasks[index].description}" ?`)
-  //   setTasks(updatedTasks);
-  //   console.log(`the "${tasks[index].description}" task is now deleted`);
-  // }
-
   function deleteSelectedTask(index: number) {
     // Show a confirmation dialog
     const confirmed = window.confirm(`Are you sure you want to delete "${tasks[index].description}"?`);
